@@ -16,6 +16,8 @@ namespace AspNetCoreSite
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // use mvc step1
+            services.AddMvc(o=>o.EnableEndpointRouting=false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,7 +29,14 @@ namespace AspNetCoreSite
             }
 
             app.UseRouting();
-
+            app.UseStaticFiles();
+            //use mvc step2
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>

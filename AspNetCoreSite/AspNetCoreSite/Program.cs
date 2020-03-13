@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 
 namespace AspNetCoreSite
 {
@@ -18,6 +19,12 @@ namespace AspNetCoreSite
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                // this add Nlog
+                .ConfigureLogging((hostContext, logging) =>
+                {
+                    logging.AddConfiguration(hostContext.Configuration.GetSection("Logging"));
+                    logging.AddNLog();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
