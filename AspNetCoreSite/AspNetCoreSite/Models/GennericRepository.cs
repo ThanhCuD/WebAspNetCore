@@ -27,7 +27,7 @@ namespace AspNetCoreSite.Models
             await appDbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAll()
+        public  IEnumerable<T> GetAll()
         {
             return dbset.AsEnumerable();
         }

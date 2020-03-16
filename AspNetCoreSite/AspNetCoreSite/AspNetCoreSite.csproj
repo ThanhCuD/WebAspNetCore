@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200316081128_init db.cs" />
+    <Compile Remove="Migrations\20200316081128_init db.Designer.cs" />
     <Compile Remove="Migrations\20200316081234_add employees.cs" />
     <Compile Remove="Migrations\20200316081234_add employees.Designer.cs" />
     <Compile Remove="Migrations\20200316083631_change migration.cs" />
