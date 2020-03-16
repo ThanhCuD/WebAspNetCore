@@ -18,7 +18,6 @@ namespace AspNetCoreSite.Controllers
             this.logger = logger;
             this.genericRepository = genericRepository;
         }
-        [Route("Employees/Index")]
         public IActionResult Index()
         {
             try
@@ -31,7 +30,6 @@ namespace AspNetCoreSite.Controllers
                 logger.LogError(ex.ToString());
                 return View("Error");
             }
-            
         }
     }
 }
