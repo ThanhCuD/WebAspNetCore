@@ -1,0 +1,27 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Detail";
+}
+
+    <form>
+        <div class="container">
+            <h1>@ViewData["Title"]</h1>
+            <p>Detail of the employee</p>
+            <hr>
+            <label asp-for="Name"><b>Name</b></label>:
+            <label asp-for="Name">@Model.Name</label><br />
+            <label asp-for="Email"><b>Email</b></label>:
+            <label asp-for="Email">@Model.Email</label><br />
+            <label asp-for="Department"><b>Department</b></label>:
+            <label asp-for="Department">@Model.Department</label><br />
+
+        </div> 
+        <div class="">
+            <button><a asp-action="Index">See List Employee</a></button>
+            <button><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></button>
+            <button><a asp-action="Create">Create New Employee</a></button>
+        </div>
+    </form>
+
+
+

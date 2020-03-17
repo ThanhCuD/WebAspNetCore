@@ -1,0 +1,22 @@
+﻿@model CreateEmployeeViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post">
+    <div class="container">
+        <h1>Create</h1>
+        <p>Please fill in this form to create an employee.</p>
+        <hr>
+        <label asp-for="Name"><b>Name</b></label>
+        <input asp-for="Name" placeholder="Enter Name" required><br />
+        <label asp-for="Email"><b>Email</b></label>
+        <input asp-for="Email" placeholder="Enter Email" required><br />
+        <label asp-for="Department"><b>Department</b></label>
+        <input asp-for="Department" placeholder="Enter Department" required><br />
+        <button type="submit">Create</button>
+    </div>
+</form>
+
+
+

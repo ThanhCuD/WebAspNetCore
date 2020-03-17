@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20200316081234_add employees.Designer.cs" />
     <Compile Remove="Migrations\20200316083631_change migration.cs" />
     <Compile Remove="Migrations\20200316083631_change migration.Designer.cs" />
+    <Compile Remove="Migrations\20200316091310_init.cs" />
+    <Compile Remove="Migrations\20200316091310_init.Designer.cs" />
+    <Compile Remove="Migrations\20200317040201_add require field.cs" />
+    <Compile Remove="Migrations\20200317040201_add require field.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
