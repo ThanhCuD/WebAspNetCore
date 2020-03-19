@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreSite.Models;
 using AspNetCoreSite.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreSite.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly ILogger logger;

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreSite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +30,10 @@ namespace AspNetCoreSite
         {
             services.AddScoped<IGenericRepository<Employee>, GennericRepository<Employee>>();
             // use mvc step1
-            services.AddMvc(o=>o.EnableEndpointRouting=false);
+            services.AddMvc(config => config.EnableEndpointRouting = false);
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
             // use EntityFrameWork
             services.AddDbContextPool<AppDbContext>(options => 
                             options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
@@ -47,12 +53,12 @@ namespace AspNetCoreSite
 
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
             //use mvc step2
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Employees}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
